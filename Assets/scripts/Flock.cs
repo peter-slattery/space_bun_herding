@@ -69,6 +69,7 @@ public class Flock : MonoBehaviour
         }
         
         Vector3 AwayFromWall = Vector3.zero;
+        
         if (Member.MyTransform.position.x < -15)
         {
             AwayFromWall += new Vector3(1, 0, 0);
