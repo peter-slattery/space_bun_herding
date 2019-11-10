@@ -1,24 +1,21 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Shape : MonoBehaviour
 {
-
+    
     public Vector2[] shapeVertices; //bounding points of shape
     public PolygonCollider2D shapeCollider;
-
-
-    public Bun[] herd; //herd to be contained within bounds
-
-    void Awake()
+    
+    public List<Bun> herd; //herd to be contained within bounds
+    
+    public void AddBun (Bun NewBun)
     {
-
-        //shapeCollider.points = shapeVertices;
-        
+        herd.Add(NewBun);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -33,8 +30,8 @@ public class Shape : MonoBehaviour
             Camera.main.backgroundColor = Color.red;
         }
     }
-
-    bool checkHerdInBounds(Bun[] herdToCheck)
+    
+    bool checkHerdInBounds(List<Bun> herdToCheck)
     {
         foreach (Bun bunToCheck in herdToCheck)
         {
@@ -42,16 +39,16 @@ public class Shape : MonoBehaviour
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     bool checkBunInBounds(Bun bunToCheck)
     {
         Vector2 bunPoint;
-
+        
         bunPoint = bunToCheck.transform.position;
-
+        
         if(shapeCollider.bounds.Contains(bunPoint))
         {
             Debug.Log("Bounds contain the point : " + bunPoint);
@@ -62,7 +59,7 @@ public class Shape : MonoBehaviour
             return false;
         }
     }
-
+    
 }
 
 
@@ -78,7 +75,7 @@ public class Example : MonoBehaviour
     public Transform m_NewTransform;
     Collider m_Collider;
     Vector3 m_Point;
-
+    
     void Start()
     {
         //Fetch the Collider from the GameObject this script is attached to
@@ -86,7 +83,7 @@ public class Example : MonoBehaviour
         //Assign the point to be that of the Transform you assign in the Inspector window
         m_Point = m_NewTransform.position;
     }
-
+    
     void Update()
     {
         //If the first GameObject's Bounds contains the Transform's position, output a message in the console

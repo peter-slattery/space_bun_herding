@@ -16,6 +16,7 @@ public class Flock : MonoBehaviour
     public float AwarenessRadius;
     public float BaseSpeed;
     public int Count;
+    public float InitialSpread;
     
     public GameObject Prefab_FlockMember;
     
@@ -31,7 +32,7 @@ public class Flock : MonoBehaviour
         for (int i = 0; i < Count; i++)
         {
             GameObject NewMember = GameObject.Instantiate(Prefab_FlockMember);
-            NewMember.transform.position = Random.insideUnitCircle * 15;
+            NewMember.transform.position = Random.insideUnitCircle * InitialSpread;
             
             Members[i] = new FlockMember();
             Members[i].MyTransform = NewMember.transform;
@@ -70,19 +71,19 @@ public class Flock : MonoBehaviour
         
         Vector3 AwayFromWall = Vector3.zero;
         
-        if (Member.MyTransform.position.x < -15)
+        if (Member.MyTransform.position.x < -2)
         {
             AwayFromWall += new Vector3(1, 0, 0);
         }
-        else if (Member.MyTransform.position.x > 15)
+        else if (Member.MyTransform.position.x > 2)
         {
             AwayFromWall += new Vector3(-1, 0, 0);
         }
-        if (Member.MyTransform.position.y < -15)
+        if (Member.MyTransform.position.y < -5)
         {
             AwayFromWall += new Vector3(0, 1, 0);
         }
-        else if (Member.MyTransform.position.y > 15)
+        else if (Member.MyTransform.position.y > 5)
         {
             AwayFromWall += new Vector3(0, -1, 0);
         }
