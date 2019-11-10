@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Heading: {x: 0, y: 0, z: 0}
-  Acceleration: 0
-  CurrentSpeed: 0
+  Acceleration: 4
+  FrictionCo: 1.2
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!212 &1360013852
 SpriteRenderer:
@@ -294,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360013850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: -1.44, z: -91.92587}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
