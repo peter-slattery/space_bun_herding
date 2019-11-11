@@ -23,21 +23,23 @@ public class Shape : MonoBehaviour
     {
         if (checkHerdInBounds(herd) == true)
         {
+            Debug.Log("in bounds");
             visualBounds.color = Color.green;
-            StartCoroutine(CountDown());
+            //StartCoroutine(CountDown());
         }
         else
         {
-            //visualBounds.color = Color.red;
+            visualBounds.color = Color.white;
         }
     }
 
-
+/*
     IEnumerator CountDown()
     {
 
     }
 
+    */
     bool checkHerdInBounds(List<Bun> herdToCheck)
     {
         foreach (Bun bunToCheck in herdToCheck)

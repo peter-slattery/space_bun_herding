@@ -44,17 +44,19 @@ public class Ship : MonoBehaviour
         float PercentMaxSpeed = Velocity.magnitude / MaxSpeed;
         ShipHum.volume = (PercentMaxSpeed * VolumeRange) + VolumeMin;
     }
-    
+
     void Update()
     {
         float Accel = 0;
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 MouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            HandleShipInput(MouseWorldPosition);
-            Accel = Acceleration * Time.deltaTime;
-        }
-        
+        Vector3 MouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        HandleShipInput(MouseWorldPosition);
+        Accel = Acceleration * Time.deltaTime;
         UpdateShip(Accel);
+
+        if (Input.GetMouseButtonDown(0) ||
+            Input.GetKeyDown(KeyCode.Space))
+        {
+            DropBomb();
+        }
     }
 }

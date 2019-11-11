@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bcf03e73334ca429e26d058e05c954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 2
+  Radius: 5
   Strength: 10
 --- !u!82 &5549035005862432508
 AudioSource:
