@@ -14,7 +14,6 @@ public class Ship : MonoBehaviour
         Vector3 PositionToTarget = TargetPosition - transform.position;
         PositionToTarget.z = 0;
         Heading = (PositionToTarget.normalized);
-        Velocity += Acceleration * Heading * Time.deltaTime;
     }
     
     public void DoShipAction ()
@@ -22,20 +21,22 @@ public class Ship : MonoBehaviour
         
     }
     
-    public void UpdateShip ()
+    public void UpdateShip (float Accel)
     {
-        Velocity += -Velocity * FrictionCo * Time.deltaTime;
+        Velocity += (Accel * Heading) - (Velocity * FrictionCo);
         transform.position = transform.position + Velocity * Time.deltaTime;
     }
     
     void Update()
     {
+        float Accel = 0;
         if (Input.GetMouseButton(0))
         {
             Vector3 MouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             HandleShipInput(MouseWorldPosition);
+            Accel = Acceleration * Time.deltaTime;
         }
         
-        UpdateShip();
+        UpdateShip(Accel);
     }
 }

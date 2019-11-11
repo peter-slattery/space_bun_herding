@@ -360,16 +360,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Members: []
-  AwarenessRadius: 5
-  BaseSpeed: 3
+  FearSources: []
+  AwarenessRadius: 1
+  BaseAcceleration: 10
+  BaseFrictionCo: 0.1
   Count: 20
-  InitialSpread: 5
+  InitialSpread: 0.7
   Prefab_FlockMember: {fileID: 2919754833579907446, guid: 25be0a59dbebeda46ac1bec0eee3e06c,
     type: 3}
-  AlignmentWeight: 0.8
-  CohesionWeight: 0.8
-  SeparationWeight: 0.8
-  BoundsWeight: 5
+  AlignmentWeight: 0.4
+  CohesionWeight: 0.5
+  SeparationWeight: 1
+  FearWeight: 1
+  BoundsWeight: 1
 --- !u!4 &1225687897
 Transform:
   m_ObjectHideFlags: 0
@@ -615,6 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816957755}
   - component: {fileID: 1816957754}
+  - component: {fileID: 1816957756}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -635,8 +639,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Heading: {x: 0, y: 0, z: 0}
-  Acceleration: 8
-  FrictionCo: 1.2
+  Acceleration: 16
+  FrictionCo: 0.05
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &1816957755
 Transform:
@@ -655,3 +659,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816957756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816957753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bcf03e73334ca429e26d058e05c954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 2
+  Strength: 1
