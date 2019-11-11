@@ -10,7 +10,9 @@ public class Shape : MonoBehaviour
     public PolygonCollider2D shapeCollider;
     
     public List<Bun> herd; //herd to be contained within bounds
-    
+
+    public SpriteRenderer visualBounds; 
+
     public void AddBun (Bun NewBun)
     {
         herd.Add(NewBun);
@@ -21,16 +23,21 @@ public class Shape : MonoBehaviour
     {
         if (checkHerdInBounds(herd) == true)
         {
-            Debug.Log("All buns in bounds");
-            Camera.main.backgroundColor = Color.green;
+            visualBounds.color = Color.green;
+            StartCoroutine(CountDown());
         }
         else
         {
-            Debug.Log("Buns NOT in bounds");
-            Camera.main.backgroundColor = Color.red;
+            //visualBounds.color = Color.red;
         }
     }
-    
+
+
+    IEnumerator CountDown()
+    {
+
+    }
+
     bool checkHerdInBounds(List<Bun> herdToCheck)
     {
         foreach (Bun bunToCheck in herdToCheck)
