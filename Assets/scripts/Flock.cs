@@ -29,6 +29,9 @@ public class Flock : MonoBehaviour
     public float FearWeight;
     public float BoundsWeight;
     
+    public float AreaWidth;
+    public float AreaHeight;
+    
     public void AddFearSource (FearSource NewFearSource)
     {
         FearSources.Add(NewFearSource);
@@ -100,8 +103,8 @@ public class Flock : MonoBehaviour
         float YDistanceFromCenter = Mathf.Abs(Member.MyTransform.position.y);
         float XDirToCenter = -1 * Mathf.Sign(Member.MyTransform.position.x);
         float YDirToCenter = -1 * Mathf.Sign(Member.MyTransform.position.y);
-        float ReturnToXCenterWeight = XDistanceFromCenter / 2;
-        float ReturnToYCenterWeight = YDistanceFromCenter / 5;
+        float ReturnToXCenterWeight = Mathf.Clamp(((XDistanceFromCenter / AreaWidth) * 3) - 2, 0, 1);
+        float ReturnToYCenterWeight = Mathf.Clamp(((YDistanceFromCenter / AreaHeight) * 3) - 2, 0, 1);
         
         Vector3 AwayFromWall = new Vector3(ReturnToXCenterWeight * XDirToCenter,
                                            ReturnToYCenterWeight * YDirToCenter,
