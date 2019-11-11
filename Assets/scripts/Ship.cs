@@ -8,6 +8,7 @@ public class Ship : MonoBehaviour
     public float Acceleration; // Amount of Thrust
     public float FrictionCo;
     public Vector3 Velocity;
+    public GameObject Prefab_Bomb;
     
     public void HandleShipInput (Vector3 TargetPosition)
     {
@@ -16,10 +17,19 @@ public class Ship : MonoBehaviour
         Heading = (PositionToTarget.normalized);
         Velocity += Acceleration * Heading * Time.deltaTime;
     }
-    
-    public void DoShipAction ()
+
+    private void OnMouseDown()
     {
-        
+        Debug.Log("Mouse Down");
+        DropBomb();
+    }
+
+    public void DropBomb ()
+    {
+
+        GameObject bomb = GameObject.Instantiate(Prefab_Bomb);
+        bomb.transform.position = transform.position;
+
     }
     
     public void UpdateShip ()
