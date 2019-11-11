@@ -46,6 +46,7 @@ public class Flock : MonoBehaviour
         for (int i = 0; i < Count; i++)
         {
             GameObject NewMember = GameObject.Instantiate(Prefab_FlockMember);
+            NewMember.transform.parent = this.transform;
             NewMember.transform.position = Random.insideUnitCircle * InitialSpread;
             
             Members[i] = new FlockMember();
